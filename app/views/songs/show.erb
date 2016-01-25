@@ -1,12 +1,14 @@
-<h1><%= @songs.title %></h1>
+<div class="container-fluid">
+<h1><%= @song.title %></h1>
  
  <p>
-   Author: <%= @songs.author %>
+   Author: <%= @song.author %>
  </p>
  
  <p>
-   <%= @songs.url  %>
+   <%= @song.url  %>
  </p>
  
  <hr/>
- <a href="/songs">Back to All Songs</a>
+ <a class="btn btn-primary" href="/songs">Back to All Songs</a>
+</div>

@@ -1,14 +1,18 @@
-<h1>All Songs</h1>
+<h1 class="text-center">Songs</h1>
 <hr/>
  
  <% @songs.each do |song| %>
+ <div class="container-fluid">
    <div class="song">
      <h3><a href="/songs/<%= song.id %>"><%= song.title %></a> <small>(by: <%= song.author %>)</small></h3>
      <p>
        <%= song.url %>
      </p>
    </div>
+  </div>
  <% end %>
 
+ <div class="container-fluid">
  <hr/>
- <a href="/songs/new">Add a song!</a>
+ <a class="btn btn-primary" href="/songs/new">Add a Song!</a>
+ </div>
