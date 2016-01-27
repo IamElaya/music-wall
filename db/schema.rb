@@ -11,12 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160125192603) do
+ActiveRecord::Schema.define(version: 20160127000109) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "song_id"
+    t.string   "userreview"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "songs", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "title"
     t.string   "author"
     t.string   "url"
+    t.integer  "upvotes",    default: 0, null: false
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "user_name"
+    t.string   "password"
+    t.string   "password_confirmation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

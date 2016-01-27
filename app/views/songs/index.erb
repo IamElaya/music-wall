@@ -1,6 +1,16 @@
 <h1 class="text-center">Songs</h1>
+<a class="btn btn-primary" href="/sign_up">Sign Up</a>
+<a class="btn btn-primary" href="/log_in">Log in</a>
+<a class="btn btn-primary" href="/log_out">Log out</a>
 <hr/>
- 
+<% if current_user %>
+  <h1>Hello <%= current_user.user_name %></h1>
+<% end %>
+
+<!-- +<code>
++<%= session.inspect %>
++</code> -->
+
  <% @songs.each do |song| %>
  <div class="container-fluid">
    <div class="song">
@@ -8,11 +18,21 @@
      <p>
        <%= song.url %>
      </p>
+  <p>Posted by: <%= song.user.user_name %></p>
+  <h1> #Likes: <%= song.upvotes %></h1>
+  <% if current_user && !song.already_liked?(current_user) %>
+   <a class="btn btn-primary" href="/like?id=<%= song.id%>">Like This Song?</a>
+   <% end %>
    </div>
   </div>
  <% end %>
 
  <div class="container-fluid">
  <hr/>
+
  <a class="btn btn-primary" href="/songs/new">Add a Song!</a>
+
  </div>
+
+<!-- #session.clear
+#session[:user_id] = nil -->

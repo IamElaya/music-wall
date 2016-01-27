@@ -8,6 +8,40 @@
  <p>
    <%= @song.url  %>
  </p>
+<p> 
+  <% @reviews.each do |review| %>
+  <%=review.userreview %>
+  <% end %>
+</p>
+<% if current_user && !@song.already_reviewed?(current_user) %>
+<div class="container-fluid">
+ <form method="post" action="/review">
+   <div class="form-group">
+     <label for="exampleInputComment1">Review This Song!</label>
+     <input type="text" class="form-control" id="exampleInputComment1" name="comment"  placeholder="Comment">
+     <input type="hidden" name="id" value="<%= @song.id %>">
+     <div class="dropdown">
+      <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Rate<span class="caret"></span></button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li role="separator" class="divider"></li>
+  <!--   <li><a href="#">Separated link</a></li> -->
+  </ul>
+</div>
+   </div>
+   <button class="btn btn-primary" type="submit" >Submit</button>
+ <% end %>
+  </form>
+ <% if current_user && @song.already_reviewed?(current_user) %>
+ <form method ="get" action='/delete'>
+  <button class="btn btn-primary" type="submit">Delete</button>
+   <% end %>
+   </form>
+</div>
  
  <hr/>
  <a class="btn btn-primary" href="/songs">Back to All Songs</a>
