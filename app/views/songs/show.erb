@@ -11,6 +11,7 @@
 <p> 
   <% @reviews.each do |review| %>
   <%=review.userreview %>
+  <%=review.rating_field %>
   <% end %>
 </p>
 <% if current_user && !@song.already_reviewed?(current_user) %>
@@ -20,18 +21,14 @@
      <label for="exampleInputComment1">Review This Song!</label>
      <input type="text" class="form-control" id="exampleInputComment1" name="comment"  placeholder="Comment">
      <input type="hidden" name="id" value="<%= @song.id %>">
-     <div class="dropdown">
-      <button class="btn btn-primary" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Rate<span class="caret"></span></button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li role="separator" class="divider"></li>
-  <!--   <li><a href="#">Separated link</a></li> -->
-  </ul>
-</div>
+     <select name="rating">
+     <option>rate</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+     </select>
    </div>
    <button class="btn btn-primary" type="submit" >Submit</button>
  <% end %>

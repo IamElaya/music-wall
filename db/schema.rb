@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160127000109) do
     t.integer  "user_id"
     t.integer  "song_id"
     t.string   "userreview"
+    t.integer  "rating_field"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

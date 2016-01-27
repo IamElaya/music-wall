@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
   belongs_to :song
 
 
-
+  validates :rating_field, presence: true, format: { with: /\A[1-5]\z/}
   validates :song, uniqueness: { scope: :user, message: "Can only be reviewed once" }
   # validate :voted, 
 

@@ -110,7 +110,8 @@ post '/review' do
     @review = Review.new(
       user_id: current_user.id,
       song_id: @song.id,
-      userreview: params[:comment]
+      userreview: params[:comment],
+      rating_field: params[:rating]
       )
    if  @review.save
    @song.save
